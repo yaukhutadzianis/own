@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+
+import { Provider } from 'react-redux'
+import { configureStore } from '@reduxjs/toolkit'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,6 +14,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 import MainpageTpl from './templaes/MainpageTpl';
 import TodoTpl from './templaes/TodoTpl';
+import todoReducer from './components/Todo/slice';
 
 const router = createBrowserRouter([
   {
@@ -18,13 +22,22 @@ const router = createBrowserRouter([
     element: <MainpageTpl />,
   }, {
     path: "/todo",
-    element: <TodoTpl />,
+    element: <TodoTpl />, 
   },
 ]);
+
+
+const store = configureStore({
+  reducer: {
+    todo: todoReducer,
+  },
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );
 
