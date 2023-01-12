@@ -14,7 +14,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 import MainpageTpl from './templaes/MainpageTpl';
 import TodoTpl from './templaes/TodoTpl';
-import todoReducer from './components/Todo/slice';
+import todoReducer from './components/Todo/todoSlice';
 
 const router = createBrowserRouter([
   {

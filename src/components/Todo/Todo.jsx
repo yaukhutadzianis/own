@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import {addTodo, setTodoInputValue} from './slice'
+import {addTodo, removeTodo, sortUp, sortDown, setTodoInputValue} from './todoSlice'
 import { CgCloseR } from "react-icons/cg";
 import { IoIosArrowDropupCircle, IoIosArrowDropdownCircle } from "react-icons/io";
 
@@ -54,13 +54,13 @@ function Todo() {
           {todoList.map((e, i) => (
             <div key={`todos${i}`} className="bg-warning my-2 py-2 px-3 rounded d-flex justify-content-between align-items-center">
               <div>{e}</div>
-              {/* <div className="d-flex justify-content-between align-items-center">
-                <div onClick={() => sortDown(i)} className="d-flex ms-3" role="button"><IoIosArrowDropdownCircle size={23} /></div>
-                <div onClick={() => sortUp(i)} className="d-flex" role="button"><IoIosArrowDropupCircle size={23} /></div>
-                <div onClick={() => removeTodo(i)} className="d-flex ms-3" role="button">
+              <div className="d-flex justify-content-between align-items-center">
+                <div onClick={() => dispatch(sortDown(i))} className="d-flex ms-3" role="button"><IoIosArrowDropdownCircle size={23} /></div>
+                <div onClick={() => dispatch(sortDown(i))} className="d-flex" role="button"><IoIosArrowDropupCircle size={23} /></div>
+                <div onClick={() => dispatch(removeTodo(i))} className="d-flex ms-3" role="button">
                   <CgCloseR size={20} />
                 </div>
-              </div> */}
+              </div>
             </div>
           ))}
         </div>
