@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { Provider } from 'react-redux'
@@ -19,7 +19,7 @@ import './index.scss'
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc, setDoc, doc, docRef } from 'firebase/firestore/lite';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,19 +37,39 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// async function getCities(db) {
-//   const citiesCol = collection(db, 'cities');
-//   const citySnapshot = await getDocs(citiesCol);
-//   const cityList = citySnapshot.docs.map(doc => doc.data());
-//   return cityList;
-// }
+async function getCards(db) {
+  const cardsCol = collection(db, 'cards');
+  const cardSnapshot = await getDocs(cardsCol);
+  const cardList = cardSnapshot.docs.map(doc => doc.data());
+  return cardList;
+}
+
+setDoc(doc(db, "cards", "sdfgdf5r5"), {title: "tststststs2"});
+
+
+
+
+const getData = async () => {
+// Add a new document with a generated id.
+const res = await db.collection('cards').add({
+  title: 'Tokyo',
+});
+
+console.log('Added document with ID: ', res.id);
+}
+useEffect(() => {
+   // Fetching Data on Initial Load
+   getData()
+},[])
+
+console.log(getCards(db))
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainpageTpl />,
   }, {
-    path: "/todo",
+    path: "/todo", 
     element: <TodoTpl />, 
   },
 ]);

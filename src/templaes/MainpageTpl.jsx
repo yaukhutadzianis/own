@@ -4,10 +4,10 @@ import Header from '../components/Header/Header'
 
 function MainpageTpl() {
   return (
-    <div class="d-flex flex-column h-100">
+    <div className="d-flex flex-column h-100">
       <Header />
       <div className="container-fluid h-100">
-        <div class="row h-100">
+        <div className="row h-100">
           <div className="col-2">
             
           </div>
