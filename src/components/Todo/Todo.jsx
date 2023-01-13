@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import {addTodo, removeTodo, sortUp, sortDown, setTodoInputValue} from './todoSlice'
+import { addTodo, removeTodo, sortUp, sortDown, setTodoInputValue } from './todoSlice'
 import { CgCloseR } from "react-icons/cg";
 import { IoIosArrowDropupCircle, IoIosArrowDropdownCircle } from "react-icons/io";
 
@@ -44,8 +44,8 @@ function Todo() {
 
       <div className="container py-lg-5">
         <h1 className="mb-4">Todo</h1>
-        <input onChange={(e) => {setTodo(e.target.value); dispatch(setTodoInputValue(e.target.value))}} value={todo} className="form-control mb-3" placeholder="Todo name" type="text" aria-label="input"></input>
-        <button onClick={() => {dispatch(addTodo(todo)); setTodo('')}} type="button" className="btn btn-primary">Add</button>
+        <input onChange={(e) => { setTodo(e.target.value); dispatch(setTodoInputValue(e.target.value)) }} value={todo} className="form-control mb-3" placeholder="Todo name" type="text" aria-label="input"></input>
+        <button onClick={() => { dispatch(addTodo(todo)); setTodo('') }} type="button" className="btn btn-primary">Add</button>
       </div>
 
       <div className="container">
