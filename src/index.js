@@ -22,19 +22,19 @@ import todoReducer from './components/Todo/todoSlice';
 import './index.scss'
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc, setDoc, doc, docRef } from 'firebase/firestore/lite';
+import { getFirestore} from 'firebase/firestore/lite';
 
 
 
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAa8ohfH3Z5v2nRa5ve6sj5fwwzOg2QqgI",
-  authDomain: "reactoos.firebaseapp.com",
-  projectId: "reactoos",
-  storageBucket: "reactoos.appspot.com",
-  messagingSenderId: "748289109250",
-  appId: "1:748289109250:web:193c93242101237d64e61b"
+  apiKey: "AIzaSyAgKAzapWyDp96VLrhAwzwNgTCVNkXvthQ",
+  authDomain: "fbreactoos.firebaseapp.com",
+  projectId: "fbreactoos",
+  storageBucket: "fbreactoos.appspot.com",
+  messagingSenderId: "509916133363",
+  appId: "1:509916133363:web:db54ec6f7744e257f44486"
 };
 
 const app = initializeApp(firebaseConfig);

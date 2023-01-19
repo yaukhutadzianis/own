@@ -15,28 +15,25 @@ function Desk() {
     const db = appContext.firebase.db
 
     async function getCards(db) {
-      const cl = collection(db, 'cards')
-      const querySnapshot = await getDocs(cl)
-      let cardsList = []
-      querySnapshot.docs.map((doc) => {
-        cardsList.push({ id: doc.id, ...doc.data()})
-      })
-      console.log(cardsList)
-      setCards(cardsList)
+        const cl = collection(db, 'cards')
+        const querySnapshot = await getDocs(cl)
+        let cardsList = []
+        querySnapshot.docs.map((doc) => {
+            cardsList.push({ id: doc.id, ...doc.data() })
+        })
+        console.log(cardsList)
+        setCards(cardsList)
     }
 
     useEffect(() => {
         getCards(db)
-    }, [cards]);
+    }, []);
 
     return (
         <div className={`${styles.wrapper} d-flex h-100 p-4`} style={{ backgroundImage: `url(${wrapperStyleBg})` }}>
-            {cards.map((e) =>
-                <Card  />
+            {cards.map((e) => 
+                <Card data={e} key={e.id} />
             )}
-            <Card />
-            <Card />
-            <Card />
         </div>
     )
 }
