@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from './Card/Card'
-import AppContext from '../../index'
-import { getFirestore, collection, getDocs, addDoc, setDoc, doc, docRef } from 'firebase/firestore/lite';
+import db from '../../db';
+import { collection, getDocs } from 'firebase/firestore/lite';
 
 import styles from './Desk.module.scss'
 
@@ -11,9 +11,6 @@ function Desk() {
 
     const [cards, setCards] = useState([])
 
-    const appContext = useContext(AppContext)
-    const db = appContext.firebase.db
-
     async function getCards(db) {
         const cl = collection(db, 'cards')
         const querySnapshot = await getDocs(cl)
@@ -21,12 +18,21 @@ function Desk() {
         querySnapshot.docs.map((doc) => {
             cardsList.push({ id: doc.id, ...doc.data() })
         })
-        console.log(cardsList)
         setCards(cardsList)
     }
 
     useEffect(() => {
-        getCards(db)
+        // getCards(db)
+        setCards([
+            {
+                "id": "FI8stOeKm4mdH3xFCjfu", 
+                "title": "Card 2"
+            },
+            {
+                "id": "rJDWKPUl9sbWu3JxC4VK",
+                "title": "Card 1"
+            },
+        ])
     }, []);
 
     return (
